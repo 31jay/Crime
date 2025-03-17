@@ -8,7 +8,7 @@ import streamlit as st
 PROJECT = "CrimeNetX"
 headText = "#66CCFF"
 
-//DATABASE_CONFIG = {
+#DATABASE_CONFIG = {
     'user': 'postgres',
     'password': 'ahjd',
     'host': 'localhost',
