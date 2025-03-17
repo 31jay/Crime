@@ -20,7 +20,7 @@ def msg(user):
         st.session_state.store_message=False 
     with st.container(height=400):
         msgs=get_all_messages() 
-        image='icons\\chat.jpg' 
+        image='icons//chat.jpg' 
         if msgs:
             for date,m_time,message,username in msgs:
                 if date==datetime.datetime.now().date():
@@ -30,7 +30,7 @@ def msg(user):
                          """,unsafe_allow_html=True) 
                 st.chat_message(username,avatar=image).write(f"""<p style="margin-top: -10px" >{message}</p>""",unsafe_allow_html=True)
         else:
-            st.chat_message('Begin Conversation',avatar="icons\\criminova.gif").write('Start Messaging')
+            st.chat_message('Begin Conversation',avatar="icons//criminova.gif").write('Start Messaging')
     your_message=st.chat_input(on_submit=store_message)
     placeholder=st.empty() 
     if st.session_state.store_message:
