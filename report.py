@@ -2,9 +2,16 @@ import streamlit as st
 import database as db 
 from datetime import date
 import pdfkit
-import psycopg2
+import os 
 
-config = pdfkit.configuration(wkhtmltopdf='C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe')
+# Find wkhtmltopdf in deployment environment
+def get_wkhtmltopdf_path():
+    if os.name == 'nt':  # Windows
+        return 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe'
+    else:  # Linux or macOS
+        return '/usr/bin/wkhtmltopdf'
+
+config = pdfkit.configuration(wkhtmltopdf=get_wkhtmltopdf_path())
 
 def generate_case_report(case_id, username):
     # Connect to the database
@@ -133,8 +140,8 @@ def generate_case_report(case_id, username):
         <div class="footer">
             <div>
                 <p>Investigation with:</p>
-                <p style="font-size: 25px"><strong>CrimeNetX</strong></p>
-                <P>Crime Solve Done</p>
+                <p style="font-size: 25px"><strong>CRIMINOVA</strong></p>
+                <P>Solving Crime Together</p>
         </div>
     </body>
     </html>
@@ -143,16 +150,9 @@ def generate_case_report(case_id, username):
     return html_content
 
 
-def generate_pdf(html_content,css_content,output_filename,case,user):
+def generate_pdf(html_content,css_content,output_filename):
     if pdfkit.from_string(html_content, output_filename,configuration=config,css=css_content):
-        placeholder=st.empty() 
-        with open(f"Case_{case}.pdf", "rb") as file:
-                pdf_data = file.read()
-                conn=db.connect_db()
-                db.run_query(conn,f"""INSERT INTO pdf_reports (file, username,file_name) VALUES ({psycopg2.Binary(pdf_data)},'{user}','Case_{case}')
-                             ON CONFLICT (file_name) DO UPDATE SET file_name = 'Case_{case}'
-                             """,msg="File Saved",slot=placeholder)
-        # st.success(f"PDF generated: [{output_filename}]({output_filename})")
+        st.success(f"PDF generated: [{output_filename}](./{output_filename})")
     else:
         st.error('Failed to generate case report !')
 
@@ -163,4 +163,3 @@ if __name__=="__main__":
     html_content = generate_case_report(case_id,username)
     if st.button("Generate PDF"):
         generate_pdf(html_content,'report.css')
-
