@@ -23,7 +23,7 @@ if 'loggedin_user' not in st.session_state:
 
 def landing_page():
     with st.sidebar:
-        st.image("icons\\criminova.gif",use_column_width=True)
+        st.image("icons/criminova.gif",use_column_width=True)
         st.markdown("<br>", unsafe_allow_html=True)  
         selected=option_menu(
             menu_title='',options=['Dashboard','New Report','Case Reports','Investigators','Authorized ','Case Mapping','Downloads'],
