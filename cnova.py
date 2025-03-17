@@ -93,7 +93,7 @@ def new_case_report():
             if other_nature and not is_duplicate:
                 nature_of_case=other_nature
             # Description of the case: var=case_description 
-            case_description=st.text_area('Case Description',placeholder='Describe the case here.',height=20)
+            case_description=st.text_area('Case Description',placeholder='Describe the case here.',height=68)
         with col2:
             st.write('<br><br>',unsafe_allow_html=True)
             #location of incident: var=lat, long 
