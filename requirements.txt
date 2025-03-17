@@ -1,0 +1,13 @@
+streamlit
+streamlit_option_menu
+bcrypt
+Pillow
+psycopg2-binary 
+folium
+streamlit_folium
+pandas
+numpy
+fuzzywuzzy
+plotly
+pdfkit
+components
