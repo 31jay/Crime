@@ -8,13 +8,15 @@ import streamlit as st
 PROJECT = "CrimeNetX"
 headText = "#66CCFF"
 
-#DATABASE_CONFIG = {
+'''
+DATABASE_CONFIG = {
     'user': 'postgres',
     'password': 'ahjd',
     'host': 'localhost',
     'port': '5432',
     'database': 'criminovadb'
 }
+'''
 # Fetch DATABASE_URL from environment variables
 DATABASE_URL = os.getenv('DATABASE_URL')
 
