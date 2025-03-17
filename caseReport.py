@@ -667,7 +667,7 @@ def case_investigation(username):
                 # with s_col1:
                 #     st.image('icons\icon.png',width=200)
                 # with s_col2:
-                #     st.image('icons\dashboard_empty.png',use_column_width=True)
+                #     st.image('icons\dashboard_empty.png',use_container_width=True)
     except Exception as e:
         st.warning(f'Something wrong with database: {e}')
     
