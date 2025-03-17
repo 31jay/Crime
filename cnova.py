@@ -23,7 +23,7 @@ if 'loggedin_user' not in st.session_state:
 
 def landing_page():
     with st.sidebar:
-        st.image("icons/criminova.gif",use_column_width=True)
+        st.image("icons/criminova.gif",use_container_width=True)
         st.markdown("<br>", unsafe_allow_html=True)  
         selected=option_menu(
             menu_title='',options=['Dashboard','New Report','Case Reports','Investigators','Authorized ','Case Mapping','Downloads'],
@@ -148,7 +148,7 @@ def main():
         with col2:
             st.markdown("<br><br><br><br>", unsafe_allow_html=True)      
             slot1=st.empty()
-            slot1.image('icons/criminova.gif',use_column_width=True)
+            slot1.image('icons/criminova.gif',use_container_width=True)
 
             st.markdown("<br>", unsafe_allow_html=True)  
             #text input for username  
