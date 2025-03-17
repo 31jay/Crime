@@ -1,3 +1,4 @@
+import os
 import psycopg2
 import bcrypt 
 from fuzzywuzzy import process
